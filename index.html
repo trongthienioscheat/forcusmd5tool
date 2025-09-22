@@ -3,24 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tối ưu Trọng Thiện</title>
+    <title>trongthienzl0376016213</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="particles-js"></div>
-    <div class="terminal">
-        <div class="header">#optimizer-trongthien <span class="blink">_</span></div>
-        <div class="content" id="terminalContent">
-            <p>trongthienxngoducduy</p>
-            <p>zalo.me/0376016213</p>
-            <p>optimizerDevice</p>
-            <p>Last Scan: 2025-06-17 14:30</p>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h1>🔐 Đăng Nhập Hệ Thống</h1>
+            </div>
+            
+            <div class="login-form">
+                <div class="input-group">
+                    <label for="accessKey">Key thành viên:</label>
+                    <input type="password" id="accessKey" placeholder="ForcusMD5 Tool by TrongThien" autocomplete="off">
+                    <div id="loginError" class="login-error"></div>
+                </div>
+                
+                <button onclick="validateAccess()" class="login-btn">
+                    <span id="loginBtnText">Đăng Nhập</span>
+                    <div id="loginSpinner" class="login-spinner" style="display: none;"></div>
+                </button>
+                
+                <div class="login-info">
+                    <small>
+💎 Admin-TrongThien | Zalo 0376016213</small>
+             
+                </div>
+            </div>
         </div>
-        <button class="button" onclick="optimizeDevice()">Optimize Device</button>
-        <div class="status" id="status">Ready...</div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- Main Application (Hidden Initially) -->
+    <div id="mainApp" class="container" style="display: none;">
+        <header>
+            <div class="header-content">
+                <h1>FORCUSMD5</h1>
+            </div>
+
+                <button onclick="logout()" class="logout-btn" title="Đăng xuất">
+                     Đăng Xuất
+                </button>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="md5Input">Nhập Mã MD5:</label>
+                    <input type="text" id="md5Input" placeholder="Nhập mã MD5">
+                    <button onclick="analyzeMD5()">Phân Tích</button>
+                </div>
+                
+                <div class="input-group">
+                    <label for="batchInput">Phân Tích Hàng Loạt (mỗi mã một dòng):</label>
+                    <textarea id="batchInput" placeholder="Nhập nhiều mã MD5, mỗi mã một dòng"></textarea>
+                    <button onclick="batchAnalyze()">Phân Tích Hàng Loạt</button>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="analysis-display">
+                    <h3>Kết Quả Phân Tích</h3>
+                    <div id="currentAnalysis" class="analysis-card">
+                        <p>Nhập mã MD5 để xem kết quả phân tích</p>
+                    </div>
+                </div>
+
+                <div class="prediction-display">
+                    <h3>Dự Đoán Kết Quả</h3>
+                    <div id="predictionResult" class="prediction-card">
+                        <div class="prediction-value">-</div>
+                        <div class="confidence-level">Độ tin cậy: -</div>
+                    </div>
+                </div>
+
+                <div class="statistics-display">
+                    <h3>Thống Kê Phân Tích</h3>
+                    <div id="statistics" class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Đã phân tích:</span>
+                            <span class="stat-value" id="totalAnalyzed">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Dự đoán Tài:</span>
+                            <span class="stat-value" id="overCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Dự đoán Xỉu:</span>
+                            <span class="stat-value" id="underCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Tỷ lệ thành công:</span>
+                            <span class="stat-value" id="successRate">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="history-section">
+                <h3>Lịch Sử Phân Tích</h3>
+                <div class="history-controls">
+                    <button onclick="clearHistory()">Xóa Lịch Sử</button>
+                    <button onclick="exportHistory()">Xuất Kết Quả</button>
+                </div>
+                <div id="historyList" class="history-list">
+                    <p>Chưa có lịch sử phân tích nào</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
